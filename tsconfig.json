@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "bpl-error-report": [
+        "dist/bpl-error-report"
+      ],
+      "bpl-error-report/*": [
+        "dist/bpl-error-report/*"
+      ]
+    }
   }
 }

@@ -1,0 +1,22 @@
+{
+  "name": "bpl-error-report",
+  "version": "0.0.1",
+  "description": "Capture exceptions in front-end programs and report the exceptions to the server.",
+  "peerDependencies": {
+    "@angular/common": "^7.2.0",
+    "@angular/core": "^7.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/duliu1990/error-report"
+  },
+  "keywords": [
+    "error",
+    "report",
+    "angular7",
+    "ng"
+  ],
+  "author": "duliu1990@gmail.com",
+  "license": "Apache Version 2.0"
+
+}

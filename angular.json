@@ -7,7 +7,7 @@
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
-      "prefix": "blp",
+      "prefix": "bpl",
       "schematics": {},
       "architect": {
         "build": {
@@ -124,6 +124,41 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "bpl-error-report": {
+      "root": "projects/bpl-error-report",
+      "sourceRoot": "projects/bpl-error-report/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/bpl-error-report/tsconfig.lib.json",
+            "project": "projects/bpl-error-report/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/bpl-error-report/src/test.ts",
+            "tsConfig": "projects/bpl-error-report/tsconfig.spec.json",
+            "karmaConfig": "projects/bpl-error-report/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/bpl-error-report/tsconfig.lib.json",
+              "projects/bpl-error-report/tsconfig.spec.json"
+            ],
             "exclude": [
               "**/node_modules/**"
             ]
