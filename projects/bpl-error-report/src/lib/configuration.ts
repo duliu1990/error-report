@@ -13,14 +13,16 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-export type LogLevel = 'error'|'trace'|'debug'|'info'|'warn'|'fatal'|undefined;
+export type LogLevel = 'error' | 'debug' | 'info' | 'warn' | undefined;
 
+export type MsgType = 'caughtError' | 'httpError' | 'resourceError' | undefined;
 
 export interface Configuration {
     projectId: string;
     reportUrl: string;
-    logLevel?: string|number;
+    logLevel?: string | number; //
     ignoreKey?: [];
     delay?: number;
-    repeat: number;
+    repeat?: number;
+    submit: any;
 }
