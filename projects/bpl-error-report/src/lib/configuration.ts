@@ -15,14 +15,50 @@
  */
 export type LogLevel = 'error' | 'debug' | 'info' | 'warn' | undefined;
 
-export type MsgType = 'caughtError' | 'httpError' | 'resourceError' | undefined;
+//export type MsgType = 'TypeError' | 'caughtError' | 'httpError' | 'resourceError' | undefined;
 
 export interface Configuration {
+    /**
+     * uid with report
+     */
     projectId: string;
+
+    /**
+     * report send url
+     */
     reportUrl: string;
-    logLevel?: string | number; //
-    ignoreKey?: [];
+
+    /**
+     * log level
+     */
+    logLevel?: LogLevel;
+    /**
+     * RegExp or function check with message
+     * 
+     * if is function, eg check function(error: ErrorMessage){}
+     * 
+     */
+    ignoreKey?: any[]; //
+
+    /**
+     * delay report, by default is 5s
+     */
     delay?: number;
+
+    /**
+     * same message repeat times, if more the this time will ignore
+     */
     repeat?: number;
-    submit: any;
+
+    /**
+     * custom report submit function
+     * 
+     * function(url, errors[])
+     */
+    submit: any; //submit function
+
+    /**
+     * random ignore the message collection
+     */
+    random: 1;
 }

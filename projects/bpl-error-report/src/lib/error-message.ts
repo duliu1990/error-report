@@ -30,6 +30,7 @@ export interface ReportLocation { filePath: string; lineNumber: number; function
 
 export class ErrorMessage {
   version: string = "0.0.1";
+  appId: string;
 
   targetUrl: string;
   errorType: string;
@@ -59,6 +60,16 @@ export class ErrorMessage {
     };
 
     this.locale = window.navigator.language;
+    this.targetUrl = window.location.href;
+
+  }
+
+  /**
+   * 
+   * @param appId 
+   */
+  setAppId(appId?: string) {
+    this.appId = (isString(appId) ? appId : '');
   }
 
   /**
@@ -67,10 +78,6 @@ export class ErrorMessage {
    */
   setTargetUrl(targetUrl?: string) {
     this.targetUrl = (isString(targetUrl) ? targetUrl : '')!;
-
-    if (this.targetUrl == '') {
-      this.targetUrl = window.location.href;
-    }
   }
 
   /**
@@ -84,9 +91,7 @@ export class ErrorMessage {
 
   /**
   * Sets the message property on the instance.
-  * @chainable
-  * @param {String} message - the error message
-  * @returns {this} - returns the instance for chaining
+  * @param message - the error message
   */
   setMessage(message?: string) {
     this.message = (isString(message) ? message : '')!;
@@ -96,13 +101,10 @@ export class ErrorMessage {
   /**
    * Sets the eventTime property on the instance to an ISO-8601 compliant string
    * representing the current time at invocation.
-   * @function setEventTimeToNow
-   * @chainable
-   * @returns {this} - returns the instance for chaining
+   * setEventTimeToNow
    */
   setEventTimeToNow() {
     this.eventTime = new Date().toISOString();
-
   }
 
   /**
@@ -116,9 +118,8 @@ export class ErrorMessage {
   /**
    * Sets the context.httpRequest.method property on the instance.
    * @chainable
-   * @param {String} method - the HTTP method on the request which caused the
+   * @param method - the HTTP method on the request which caused the
    *  errors instantiation
-   * @returns {this} - returns the instance for chaining
    */
   setHttpMethod(method?: string) {
     this.context.httpRequest.method = (isString(method) ? method : '')!;
@@ -128,8 +129,7 @@ export class ErrorMessage {
   /**
    * Sets the context.httpRequest.url property on the instance.
    * @chainable
-   * @param {String} url - the requests target url
-   * @returns {this} - returns the instance for chaining
+   * @param url - the requests target url
    */
   setUrl(url?: string) {
     this.context.httpRequest.url = (isString(url) ? url : '')!;
@@ -138,8 +138,7 @@ export class ErrorMessage {
   /**
    * Sets the context.httpRequest.userAgent property on the instance.
    * @chainable
-   * @param {String} userAgent - the requests user-agent
-   * @returns {this} - returns the instance for chaining
+   * @param userAgent - the requests user-agent
    */
   setUserAgent(userAgent?: string) {
     this.context.httpRequest.userAgent =
@@ -149,8 +148,7 @@ export class ErrorMessage {
   /**
    * Sets the context.httpRequest.referrer property on the instance.
    * @chainable
-   * @param {String} referrer - the requests referrer
-   * @returns {this} - returns the instance for chaining
+   * @param referrer - the requests referrer
    */
   setReferrer(referrer?: string) {
     this.context.httpRequest.referrer = (isString(referrer) ? referrer : '')!;
@@ -160,8 +158,7 @@ export class ErrorMessage {
   /**
    * Sets the context.httpRequest.responseStatusCode property on the instance.
    * @chainable
-   * @param {Number} responseStatusCode - the response status code
-   * @returns {this} - returns the instance for chaining
+   * @param responseStatusCode - the response status code
    */
   setResponseStatusCode(responseStatusCode?: number) {
     this.context.httpRequest.responseStatusCode =
@@ -172,8 +169,7 @@ export class ErrorMessage {
   /**
    * Sets the context.httpRequest.remoteIp property on the instance
    * @chainable
-   * @param {String} remoteIp - the requesters remote IP
-   * @returns {this} - returns the instance for chaining
+   * @param remoteIp - the requesters remote IP
    */
   setRemoteIp(remoteIp?: string) {
     this.context.httpRequest.remoteIp = (isString(remoteIp) ? remoteIp : '')!;
@@ -183,8 +179,7 @@ export class ErrorMessage {
   /**
    * Sets the context.user property on the instance
    * @chainable
-   * @param {String} user - the vm instances user
-   * @returns {this} - returns the instance for chaining
+   * @param user - the vm instances user
    */
   setUser(user?: string) {
     this.context.user = (isString(user) ? user : '')!;
@@ -194,8 +189,7 @@ export class ErrorMessage {
   /**
    * Sets the context.reportLocation.filePath property on the instance
    * @chainable
-   * @param {String} filePath - the vm instances filePath
-   * @returns {this} - returns the instance for chaining
+   * @param filePath - the vm instances filePath
    */
   setFilePath(filePath?: string) {
     this.reportLocation.filePath =
@@ -206,8 +200,7 @@ export class ErrorMessage {
   /**
    * Sets the context.reportLocation.lineNumber property on the instance
    * @chainable
-   * @param {Number} lineNumber - the line number of the report context
-   * @returns {this} - returns the instance for chaining
+   * @param lineNumber - the line number of the report context
    */
   setLineNumber(lineNumber?: number) {
     this.reportLocation.lineNumber =
@@ -218,16 +211,12 @@ export class ErrorMessage {
   /**
    * Sets the context.reportLocation.functionName property on the instance
    * @chainable
-   * @param {String} functionName - the function name of the report context
-   * @returns {this} - returns the instance for chaining
+   * @param functionName - the function name of the report context
    */
   setFunctionName(functionName?: string) {
     this.reportLocation.functionName =
       (isString(functionName) ? functionName : '')!;
 
   }
-
-
-
 
 }

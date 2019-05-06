@@ -1,6 +1,6 @@
 {
   "name": "bpl-error-report",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Capture exceptions in front-end programs and report the exceptions to the server.",
   "peerDependencies": {
     "@angular/common": "^7.0.0",
