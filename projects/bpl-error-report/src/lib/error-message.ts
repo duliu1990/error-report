@@ -18,7 +18,7 @@ import { isString, isNumber } from 'util';
 
 export interface Context {
   httpRequest: {
-    method: string; url: string; userAgent: string; referrer: string;
+    method: string; url: string;
     responseStatusCode: number;
     remoteIp: string;
     params: any;
@@ -50,8 +50,6 @@ export class ErrorMessage {
       httpRequest: {
         method: '',
         url: '',
-        userAgent: '',
-        referrer: '',
         responseStatusCode: 0,
         remoteIp: '',
         params: ''
@@ -133,26 +131,6 @@ export class ErrorMessage {
    */
   setUrl(url?: string) {
     this.context.httpRequest.url = (isString(url) ? url : '')!;
-  }
-
-  /**
-   * Sets the context.httpRequest.userAgent property on the instance.
-   * @chainable
-   * @param userAgent - the requests user-agent
-   */
-  setUserAgent(userAgent?: string) {
-    this.context.httpRequest.userAgent =
-      (isString(userAgent) ? userAgent : '')!;
-  }
-
-  /**
-   * Sets the context.httpRequest.referrer property on the instance.
-   * @chainable
-   * @param referrer - the requests referrer
-   */
-  setReferrer(referrer?: string) {
-    this.context.httpRequest.referrer = (isString(referrer) ? referrer : '')!;
-
   }
 
   /**
