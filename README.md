@@ -96,7 +96,9 @@ class MyModule {}
 
    Implement basic functions
 
+3. 0.0.3
 
+   Change if add custom submit method param
 
 
 # License

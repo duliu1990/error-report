@@ -25,10 +25,29 @@ export class AppComponent {
   }
 
   connectionFailed(): void {
-    let request = {name: 'this is name', age: 22};
+    let request = { name: 'this is name', age: 22 };
     this.httpClient.post('https://www.google.com.sg/events', request).subscribe(el => {
 
     });
+  }
+
+  customSubmit(): void {
+
+    this.bplErrorReportService.init({
+      projectId: 'BP1232', reportUrl: 'http://localhost:4200/event', submit: (url, errors: any[]) => {
+        console.log(url);
+        console.log(errors);
+        this.httpClient.post(url, errors).subscribe(el => {
+
+        },
+          error => {
+
+          }
+        );
+      }
+    });
+
+    this.bplErrorReportService.info('this is info');
   }
 
 }

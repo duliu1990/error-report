@@ -218,8 +218,13 @@ export class BplErrorReportService {
       }
 
       if (!isIgnore && !randomIgnore) {
-        let logStr = report_log_tostring(element, this.submitErros.length);
-        this.submitErros.push(logStr[0]);
+        if (this.config.submit) {
+          this.submitErros.push(element);
+        } else {
+          let logStr = report_log_tostring(element, this.submitErros.length);
+          this.submitErros.push(logStr[0]);
+        }
+
       }
 
     }
@@ -246,11 +251,10 @@ export class BplErrorReportService {
       return;
     }
 
-    let url = this.config.reportUrl + "?" + this.submitErros.join("&") + "&count=" + this.submitErros.length + "&_t=" + (+new Date);
-
     if (this.config.submit) {
-      this.config.submit(url, this.submitErros);
+      this.config.submit(this.config.reportUrl, this.submitErros);
     } else {
+      let url = this.config.reportUrl + "?" + this.submitErros.join("&") + "&count=" + this.submitErros.length + "&_t=" + (+new Date);
       new Image().src = url;
     }
 
